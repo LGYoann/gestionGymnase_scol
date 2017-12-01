@@ -55,11 +55,9 @@ public class fen_Accueil extends javax.swing.JFrame {
                 connextionSuccess = new JOptionPane();
                 connextionSuccess.showMessageDialog(null, "Logged as " + nom, "Connexion OK", JOptionPane.INFORMATION_MESSAGE);
                 fen_Admin fenetre_admin = new fen_Admin();
-                fenetre_admin.setVisible(true);
-                        
-                        
-                        
-                
+                fenetre_admin.setVisible(true);                
+                       
+               
 
             } else {
                 JOptionPane connextionError;
