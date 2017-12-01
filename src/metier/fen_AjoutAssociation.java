@@ -156,7 +156,7 @@ public class fen_AjoutAssociation extends javax.swing.JFrame {
                         Statement stmt;
                         ResultSet rs;
                         String pilote="org.gjt.mm.mysql.Driver";
-                        String url = new String("jdbc:mysql://localhost/gymnase");
+                        String url = new String("jdbc:mysql://localhost/gestiongymnase");
                         
                         String RefAsso = txt_RefAssoc.getText();
                         String Ville = txt_Ville.getText();
