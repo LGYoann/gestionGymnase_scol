@@ -4,6 +4,11 @@
  * and open the template in the editor.
  */
 package metier;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.*;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
@@ -19,6 +24,7 @@ public class fen_Admin extends javax.swing.JFrame {
     
     public fen_Admin() {
         initComponents();
+        afficherTableAssociation();
         
     }
     
@@ -32,88 +38,130 @@ public class fen_Admin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        btn_GererAccueil = new javax.swing.JButton();
-        btn_GererAssociations = new javax.swing.JButton();
-        btn_fermer = new javax.swing.JButton();
+        tabbed_pane_admin = new javax.swing.JTabbedPane();
+        jTabAssos = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        table_Association = new javax.swing.JTable();
+        buttonAjoutAsso = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Gestion administration :");
+        tabbed_pane_admin.setName("tabbedPaneAdmin"); // NOI18N
 
-        btn_GererAccueil.setText("Gerer les accueils");
-        btn_GererAccueil.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_GererAccueilActionPerformed(evt);
+        jTabAssos.setToolTipText("");
+        jTabAssos.setName("tabAsso"); // NOI18N
+
+        table_Association.setModel(new ModeletableAssociation());
+        jScrollPane1.setViewportView(table_Association);
+
+        buttonAjoutAsso.setText("Ajouter une association");
+        buttonAjoutAsso.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buttonAjoutAssoMouseClicked(evt);
             }
         });
 
-        btn_GererAssociations.setText("Gerer les associations");
-        btn_GererAssociations.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_GererAssociationsActionPerformed(evt);
-            }
-        });
+        javax.swing.GroupLayout jTabAssosLayout = new javax.swing.GroupLayout(jTabAssos);
+        jTabAssos.setLayout(jTabAssosLayout);
+        jTabAssosLayout.setHorizontalGroup(
+            jTabAssosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jTabAssosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jTabAssosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 393, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jTabAssosLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(buttonAjoutAsso)))
+                .addContainerGap())
+        );
+        jTabAssosLayout.setVerticalGroup(
+            jTabAssosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jTabAssosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                .addComponent(buttonAjoutAsso)
+                .addContainerGap())
+        );
 
-        btn_fermer.setText("Fermer");
-        btn_fermer.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_fermerActionPerformed(evt);
-            }
-        });
+        tabbed_pane_admin.addTab("Gérer les associations", jTabAssos);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 417, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 275, Short.MAX_VALUE)
+        );
+
+        tabbed_pane_admin.addTab("tab2", jPanel2);
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 417, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 275, Short.MAX_VALUE)
+        );
+
+        tabbed_pane_admin.addTab("tab3", jPanel3);
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 417, Short.MAX_VALUE)
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 275, Short.MAX_VALUE)
+        );
+
+        tabbed_pane_admin.addTab("tab4", jPanel4);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel1))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(47, 47, 47)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(btn_GererAccueil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btn_GererAssociations, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                        .addGap(0, 206, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btn_fermer)))
-                .addContainerGap())
+            .addComponent(tabbed_pane_admin)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(59, 59, 59)
-                .addComponent(btn_GererAccueil)
-                .addGap(28, 28, 28)
-                .addComponent(btn_GererAssociations)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)
-                .addComponent(btn_fermer)
-                .addContainerGap())
+                .addComponent(tabbed_pane_admin))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btn_GererAccueilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_GererAccueilActionPerformed
+    private void buttonAjoutAssoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonAjoutAssoMouseClicked
+        // TODO add your handling code here:
+          fen_AjoutAssociation fenetre = new fen_AjoutAssociation();
+           fenetre.setVisible(true);
+    }//GEN-LAST:event_buttonAjoutAssoMouseClicked
+
+    private void btn_GererAccueilActionPerformed(java.awt.event.ActionEvent evt) {                                                 
        fen_gererAccueillir fenetreGererAccueillir = new fen_gererAccueillir();
        fenetreGererAccueillir.setVisible(true);
-    }//GEN-LAST:event_btn_GererAccueilActionPerformed
-
-    private void btn_GererAssociationsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_GererAssociationsActionPerformed
-       fen_gererAssociation fenetreGererAssoc = new fen_gererAssociation();
-       fenetreGererAssoc.setVisible(true);
-    }//GEN-LAST:event_btn_GererAssociationsActionPerformed
-
-    private void btn_fermerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_fermerActionPerformed
+    }                                                
+  
+                                                 
+                                                     
+    private void btn_fermerActionPerformed(java.awt.event.ActionEvent evt) {                                           
        this.dispose();
-    }//GEN-LAST:event_btn_fermerActionPerformed
+    }                                          
+
+                                          
 
     /**
      * @param args the command line arguments
@@ -149,16 +197,59 @@ public class fen_Admin extends javax.swing.JFrame {
                 new fen_Admin().setVisible(true);
                 
             }
-        });
+        });        
       
-    }
-   
+    }  
+   private void afficherTableAssociation()
+    {
+                        Connection conn;
+                        Statement stmt;
+                        ResultSet rs;
+                        String pilote="org.gjt.mm.mysql.Driver";
+                        String url = "jdbc:mysql://localhost/gestiongymnase";
+                        
+                        try
+                        {
+                            Class.forName(pilote);
+                            conn = DriverManager.getConnection(url,"root","");
+                            stmt = conn.createStatement();
+                            rs = stmt.executeQuery("select * from association");
+                            int i = 0;
+                            while (rs.next())
+                            {
+                              
+                                table_Association.setValueAt(rs.getString("refAsso"),i,0);
+                                table_Association.setValueAt(rs.getString("ville"),i,1);
+                                table_Association.setValueAt(rs.getString("adresse"),i,2);
+                                table_Association.setValueAt(rs.getString("nomResponsable"),i,3);
+                                i++;
+                               
+                            }
+                            rs.close();
+                            stmt.close();
+                            conn.close();
+                        }
+                        catch (SQLException E)
+                        {
+                            System.out.println("SQLException" + E.getMessage());
+                            System.out.println("SQLState" + E.getSQLState());
+                            System.out.println("VendorError" + E.getErrorCode());
+                        }
+                        catch (ClassNotFoundException E)
+                        {
+                            E.printStackTrace();
+                        }
+            }
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_GererAccueil;
-    private javax.swing.JButton btn_GererAssociations;
-    private javax.swing.JButton btn_fermer;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton buttonAjoutAsso;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel jTabAssos;
+    private javax.swing.JTabbedPane tabbed_pane_admin;
+    private javax.swing.JTable table_Association;
     // End of variables declaration//GEN-END:variables
 }
