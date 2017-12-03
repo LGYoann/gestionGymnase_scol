@@ -99,8 +99,18 @@ public class fen_Accueil extends javax.swing.JFrame {
 
         jText_username.setText("Entrez votre nom d'utilisateur");
         jText_username.setToolTipText("");
+        jText_username.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jText_usernameFocusGained(evt);
+            }
+        });
 
         jPassword_login.setText("password");
+        jPassword_login.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jPassword_loginFocusGained(evt);
+            }
+        });
 
         jLabel1.setText("Nom d'utilisateur");
 
@@ -161,6 +171,17 @@ public class fen_Accueil extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jText_usernameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jText_usernameFocusGained
+        // TODO add your handling code here:
+        jText_username.setText("");
+       
+    }//GEN-LAST:event_jText_usernameFocusGained
+
+    private void jPassword_loginFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPassword_loginFocusGained
+        // TODO add your handling code here:
+        jPassword_login.setText("");
+    }//GEN-LAST:event_jPassword_loginFocusGained
 
     /**
      * @param args the command line arguments

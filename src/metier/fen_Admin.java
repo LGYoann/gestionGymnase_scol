@@ -9,9 +9,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.*;
-import javax.swing.BorderFactory;
-import javax.swing.JPanel;
+import java.util.Date;
 /**
  *
  * @author C103-image
@@ -25,9 +23,8 @@ public class fen_Admin extends javax.swing.JFrame {
     public fen_Admin() {
         initComponents();
         afficherTableAssociation();
-        
-    }
-    
+        afficherTableAccueillir();        
+    }   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -43,8 +40,14 @@ public class fen_Admin extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         table_Association = new javax.swing.JTable();
         buttonAjoutAsso = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
+        jTabAccueilSalles = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        table_gererAccueillir = new javax.swing.JTable();
+        jTabOccupation = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        table_Reservation = new javax.swing.JTable();
+        jcalOccupation = new com.toedter.calendar.JCalendar();
+        lbl_date = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -71,7 +74,7 @@ public class fen_Admin extends javax.swing.JFrame {
             .addGroup(jTabAssosLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jTabAssosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 393, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jTabAssosLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(buttonAjoutAsso)))
@@ -82,48 +85,85 @@ public class fen_Admin extends javax.swing.JFrame {
             .addGroup(jTabAssosLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 215, Short.MAX_VALUE)
                 .addComponent(buttonAjoutAsso)
                 .addContainerGap())
         );
 
         tabbed_pane_admin.addTab("Gérer les associations", jTabAssos);
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 417, Short.MAX_VALUE)
+        table_gererAccueillir.setModel(new ModeleTableAccueillir());
+        jScrollPane2.setViewportView(table_gererAccueillir);
+
+        javax.swing.GroupLayout jTabAccueilSallesLayout = new javax.swing.GroupLayout(jTabAccueilSalles);
+        jTabAccueilSalles.setLayout(jTabAccueilSallesLayout);
+        jTabAccueilSallesLayout.setHorizontalGroup(
+            jTabAccueilSallesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 659, Short.MAX_VALUE)
+            .addGroup(jTabAccueilSallesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jTabAccueilSallesLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 639, Short.MAX_VALUE)
+                    .addContainerGap()))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 275, Short.MAX_VALUE)
+        jTabAccueilSallesLayout.setVerticalGroup(
+            jTabAccueilSallesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 459, Short.MAX_VALUE)
+            .addGroup(jTabAccueilSallesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jTabAccueilSallesLayout.createSequentialGroup()
+                    .addGap(15, 15, 15)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 433, Short.MAX_VALUE)
+                    .addContainerGap()))
         );
 
-        tabbed_pane_admin.addTab("tab2", jPanel2);
+        tabbed_pane_admin.addTab("Accueil Salles", jTabAccueilSalles);
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 417, Short.MAX_VALUE)
+        table_Reservation.setModel(new ModeleTableReservation());
+        jScrollPane3.setViewportView(table_Reservation);
+
+        jcalOccupation.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jcalOccupationMouseClicked(evt);
+            }
+        });
+
+        lbl_date.setText("selectionner la date pour lequel vous souhaité afficher les réservations :");
+
+        javax.swing.GroupLayout jTabOccupationLayout = new javax.swing.GroupLayout(jTabOccupation);
+        jTabOccupation.setLayout(jTabOccupationLayout);
+        jTabOccupationLayout.setHorizontalGroup(
+            jTabOccupationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jTabOccupationLayout.createSequentialGroup()
+                .addContainerGap(169, Short.MAX_VALUE)
+                .addGroup(jTabOccupationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl_date)
+                    .addComponent(jcalOccupation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(144, 144, 144))
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 275, Short.MAX_VALUE)
+        jTabOccupationLayout.setVerticalGroup(
+            jTabOccupationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jTabOccupationLayout.createSequentialGroup()
+                .addContainerGap(13, Short.MAX_VALUE)
+                .addComponent(lbl_date, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jcalOccupation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
-        tabbed_pane_admin.addTab("tab3", jPanel3);
+        tabbed_pane_admin.addTab("Occupation", jTabOccupation);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 417, Short.MAX_VALUE)
+            .addGap(0, 659, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 275, Short.MAX_VALUE)
+            .addGap(0, 459, Short.MAX_VALUE)
         );
 
         tabbed_pane_admin.addTab("tab4", jPanel4);
@@ -150,10 +190,10 @@ public class fen_Admin extends javax.swing.JFrame {
            fenetre.setVisible(true);
     }//GEN-LAST:event_buttonAjoutAssoMouseClicked
 
-    private void btn_GererAccueilActionPerformed(java.awt.event.ActionEvent evt) {                                                 
-       fen_gererAccueillir fenetreGererAccueillir = new fen_gererAccueillir();
-       fenetreGererAccueillir.setVisible(true);
-    }                                                
+    private void jcalOccupationMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jcalOccupationMouseClicked
+        afficherOccupationSalle((Date) jcalOccupation.getCalendar().getTime());
+    }//GEN-LAST:event_jcalOccupationMouseClicked
+                                            
   
                                                  
                                                      
@@ -200,6 +240,84 @@ public class fen_Admin extends javax.swing.JFrame {
         });        
       
     }  
+    public void afficherOccupationSalle(Date DateReservation)
+    {
+                        Connection conn;
+                        Statement stmt;
+                        ResultSet rs;
+                        String pilote="org.gjt.mm.mysql.Driver";
+                        String url = new String("jdbc:mysql://localhost/gestiongymnase");
+                        
+                        try
+                        {
+                            Class.forName(pilote);
+                            conn = DriverManager.getConnection(url,"root","");
+                            stmt = conn.createStatement();
+                            rs = stmt.executeQuery("select * from reservation where date = "+ DateReservation);
+                            int i = 0;
+                            while (rs.next())
+                            {
+                              
+                                table_Reservation.setValueAt(rs.getString("refSalle"),i,0);
+                                table_Reservation.setValueAt(rs.getString("date"),i,1);
+                                table_Reservation.setValueAt(rs.getString("heure"),i,2);
+                                table_Reservation.setValueAt(rs.getString("refAsso"),i,3);
+                                i++;
+                               
+                            }
+                            rs.close();
+                            stmt.close();
+                            conn.close();
+                        }
+                        catch (SQLException E)
+                        {
+                            System.out.println("SQLException" + E.getMessage());
+                            System.out.println("SQLState" + E.getSQLState());
+                            System.out.println("VendorError" + E.getErrorCode());
+                        }
+                        catch (ClassNotFoundException E)
+                        {
+                            E.printStackTrace();
+                        }
+    }
+     private void afficherTableAccueillir()
+    {
+                        Connection conn;
+                        Statement stmt;
+                        ResultSet rs;
+                        String pilote="org.gjt.mm.mysql.Driver";
+                        String url = "jdbc:mysql://localhost/gestiongymnase";
+                        
+                        try
+                        {
+                            Class.forName(pilote);
+                            conn = DriverManager.getConnection(url,"root","");
+                            stmt = conn.createStatement();
+                            rs = stmt.executeQuery("select * from accueillir");
+                            int i = 0;
+                            while (rs.next())
+                            {
+                              
+                                table_gererAccueillir.setValueAt(rs.getString("refSalle"),i,0);
+                                table_gererAccueillir.setValueAt(rs.getString("nomSportAutorise"),i,1);
+                                i++;
+                               
+                            }
+                            rs.close();
+                            stmt.close();
+                            conn.close();
+                        }
+                        catch (SQLException E)
+                        {
+                            System.out.println("SQLException" + E.getMessage());
+                            System.out.println("SQLState" + E.getSQLState());
+                            System.out.println("VendorError" + E.getErrorCode());
+                        }
+                        catch (ClassNotFoundException E)
+                        {
+                            E.printStackTrace();
+                        }
+            }   
    private void afficherTableAssociation()
     {
                         Connection conn;
@@ -244,12 +362,18 @@ public class fen_Admin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonAjoutAsso;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JPanel jTabAccueilSalles;
     private javax.swing.JPanel jTabAssos;
+    private javax.swing.JPanel jTabOccupation;
+    private com.toedter.calendar.JCalendar jcalOccupation;
+    private javax.swing.JLabel lbl_date;
     private javax.swing.JTabbedPane tabbed_pane_admin;
     private javax.swing.JTable table_Association;
+    private javax.swing.JTable table_Reservation;
+    private javax.swing.JTable table_gererAccueillir;
     // End of variables declaration//GEN-END:variables
 }
