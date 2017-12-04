@@ -17,7 +17,7 @@ import java.util.Date;
 public class fen_Admin extends javax.swing.JFrame {
 
     /**
-     * Creates new form fen_Admin
+     * Creates new form fen_Admin test
      */
     
     public fen_Admin() {
