@@ -62,9 +62,11 @@
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jScrollPane1" max="32767" attributes="0"/>
+                          <Component id="jScrollPane1" pref="1074" max="32767" attributes="0"/>
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <Component id="jButtonModifierAsso" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                               <Component id="buttonAjoutAsso" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -78,7 +80,10 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jScrollPane1" min="-2" pref="199" max="-2" attributes="0"/>
                       <EmptySpace pref="272" max="32767" attributes="0"/>
-                      <Component id="buttonAjoutAsso" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="buttonAjoutAsso" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jButtonModifierAsso" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -107,6 +112,14 @@
               </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="buttonAjoutAssoMouseClicked"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="jButtonModifierAsso">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Modifier une association"/>
+              </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonModifierAssoMouseClicked"/>
               </Events>
             </Component>
           </SubComponents>
@@ -218,17 +231,40 @@
                               <Component id="jLabelEditer" min="-2" pref="399" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="342" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="362" max="-2" attributes="0"/>
-                              <Component id="jComboBoxRefSalle" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
-                              <Component id="jComboBoxSport" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="-2" pref="362" max="-2" attributes="0"/>
+                                      <Component id="jComboBoxRefSalle" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
+                                      <Component id="jComboBoxSport" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="307" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+                                              <Component id="jTextFieldNomSport" min="-2" pref="154" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Component id="jLabel1" min="-2" pref="324" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
                               <EmptySpace max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace max="32767" attributes="0"/>
-                              <Component id="JbuttonCreerSportSalle" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="435" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="JbuttonCreerSportSalle" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="435" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="jButtonAjoutSport" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="442" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -246,7 +282,16 @@
                               <Component id="JbuttonCreerSportSalle" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="jSeparator1" min="-2" pref="74" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jTextFieldNomSport" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
+                              <Component id="jButtonAjoutSport" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="125" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -294,6 +339,32 @@
                     </Component>
                     <Component class="javax.swing.JSeparator" name="jSeparator1">
                     </Component>
+                    <Component class="javax.swing.JLabel" name="jLabel1">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Ajouter une pratique sportive"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="jTextFieldNomSport">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="nom du sport"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jTextFieldNomSportFocusGained"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="jLabel2">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Nom du sport :"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JButton" name="jButtonAjoutSport">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Ajouter"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonAjoutSportMouseClicked"/>
+                      </Events>
+                    </Component>
                   </SubComponents>
                 </Container>
               </SubComponents>
@@ -316,13 +387,14 @@
                       <EmptySpace min="-2" pref="213" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jScrollPane3" pref="0" max="32767" attributes="0"/>
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                              <Component id="dateChooserOccupation" max="32767" attributes="0"/>
-                          </Group>
-                          <Component id="lbl_date" max="32767" attributes="0"/>
+                          <Component id="lbl_date" pref="417" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="464" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="274" max="-2" attributes="0"/>
+                      <Component id="dateChooserOccupation" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -331,9 +403,9 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="lbl_date" min="-2" pref="53" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="dateChooserOccupation" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace pref="37" max="32767" attributes="0"/>
                       <Component id="jScrollPane3" min="-2" pref="219" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>

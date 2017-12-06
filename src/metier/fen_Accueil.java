@@ -4,14 +4,9 @@
  * and open the template in the editor.
  */
 package metier;
-import java.util.*;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
 import java.sql.Connection;
 import java.sql.*;
 import javax.swing.*;/**
@@ -27,14 +22,10 @@ public class fen_Accueil extends javax.swing.JFrame {
     public fen_Accueil() {
         initComponents();
         
-         jButton_login.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                nom = jText_username.getText();
-                String passString = new String(jPassword_login.getPassword());
-                Login(nom, passString);
-            }
-           
+         jButton_login.addActionListener((ActionEvent e) -> {
+             nom = jText_username.getText();
+             String passString = new String(jPassword_login.getPassword());
+             Login(nom, passString);
         });
     }
     
@@ -43,7 +34,7 @@ public class fen_Accueil extends javax.swing.JFrame {
         Statement stmt;
         ResultSet rs;
         String pilote = "org.gjt.mm.mysql.Driver";
-        String url = new String("jdbc:mysql://localhost/gestiongymnase");
+        String url = "jdbc:mysql://localhost/gestiongymnase";
         try {
             Class.forName(pilote);
             conn = DriverManager.getConnection(url, "root", "");
@@ -53,7 +44,7 @@ public class fen_Accueil extends javax.swing.JFrame {
                 this.dispose();
                 JOptionPane connextionSuccess;
                 connextionSuccess = new JOptionPane();
-                connextionSuccess.showMessageDialog(null, "Logged as " + nom, "Connexion OK", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Logged as " + nom, "Connexion OK", JOptionPane.INFORMATION_MESSAGE);
                 fen_Admin fenetre_admin = new fen_Admin();
                 fenetre_admin.setVisible(true);                
                        
@@ -62,15 +53,13 @@ public class fen_Accueil extends javax.swing.JFrame {
             } else {
                 JOptionPane connextionError;
                 connextionError = new JOptionPane();
-                connextionError.showMessageDialog(null, "Utilisateur inexistant", "Erreur", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Utilisateur inexistant", "Erreur", JOptionPane.INFORMATION_MESSAGE);
             }
         } catch (SQLException E) {
             System.out.println("SQLException:" + E.getMessage());
             System.out.println("SQLState:" + E.getSQLState());
             System.out.println("VendorError:" + E.getErrorCode());
         } catch (ClassNotFoundException E) {
-
-            E.printStackTrace();
         }
     }
 

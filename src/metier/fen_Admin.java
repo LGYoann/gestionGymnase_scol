@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.swing.JOptionPane;
 /**
  *
  * @author C103-image
@@ -42,6 +43,7 @@ public class fen_Admin extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         table_Association = new javax.swing.JTable();
         buttonAjoutAsso = new javax.swing.JButton();
+        jButtonModifierAsso = new javax.swing.JButton();
         jTabAccueilSalles = new javax.swing.JPanel();
         jTabbedPaneAccueillir = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
@@ -53,6 +55,10 @@ public class fen_Admin extends javax.swing.JFrame {
         jComboBoxSport = new javax.swing.JComboBox<>();
         JbuttonCreerSportSalle = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
+        jLabel1 = new javax.swing.JLabel();
+        jTextFieldNomSport = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jButtonAjoutSport = new javax.swing.JButton();
         jTabOccupation = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         table_Reservation = new javax.swing.JTable();
@@ -77,6 +83,13 @@ public class fen_Admin extends javax.swing.JFrame {
             }
         });
 
+        jButtonModifierAsso.setText("Modifier une association");
+        jButtonModifierAsso.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonModifierAssoMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jTabAssosLayout = new javax.swing.GroupLayout(jTabAssos);
         jTabAssos.setLayout(jTabAssosLayout);
         jTabAssosLayout.setHorizontalGroup(
@@ -84,9 +97,11 @@ public class fen_Admin extends javax.swing.JFrame {
             .addGroup(jTabAssosLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jTabAssosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1074, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jTabAssosLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButtonModifierAsso)
+                        .addGap(26, 26, 26)
                         .addComponent(buttonAjoutAsso)))
                 .addContainerGap())
         );
@@ -96,7 +111,9 @@ public class fen_Admin extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 272, Short.MAX_VALUE)
-                .addComponent(buttonAjoutAsso)
+                .addGroup(jTabAssosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonAjoutAsso)
+                    .addComponent(jButtonModifierAsso))
                 .addContainerGap())
         );
 
@@ -156,6 +173,24 @@ public class fen_Admin extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setText("Ajouter une pratique sportive");
+
+        jTextFieldNomSport.setText("nom du sport");
+        jTextFieldNomSport.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextFieldNomSportFocusGained(evt);
+            }
+        });
+
+        jLabel2.setText("Nom du sport :");
+
+        jButtonAjoutSport.setText("Ajouter");
+        jButtonAjoutSport.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonAjoutSportMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -168,15 +203,30 @@ public class fen_Admin extends javax.swing.JFrame {
                 .addComponent(jLabelEditer, javax.swing.GroupLayout.PREFERRED_SIZE, 399, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(342, 342, 342))
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(362, 362, 362)
-                .addComponent(jComboBoxRefSalle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(76, 76, 76)
-                .addComponent(jComboBoxSport, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(362, 362, 362)
+                        .addComponent(jComboBoxRefSalle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(76, 76, 76)
+                        .addComponent(jComboBoxSport, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(307, 307, 307)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(39, 39, 39)
+                                .addComponent(jTextFieldNomSport, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(JbuttonCreerSportSalle)
-                .addGap(435, 435, 435))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(JbuttonCreerSportSalle)
+                        .addGap(435, 435, 435))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jButtonAjoutSport)
+                        .addGap(442, 442, 442))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -191,7 +241,15 @@ public class fen_Admin extends javax.swing.JFrame {
                 .addComponent(JbuttonCreerSportSalle)
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel1)
+                .addGap(30, 30, 30)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextFieldNomSport, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addGap(49, 49, 49)
+                .addComponent(jButtonAjoutSport)
+                .addContainerGap(125, Short.MAX_VALUE))
         );
 
         jTabbedPaneAccueillir.addTab("Editer", jPanel2);
@@ -228,20 +286,21 @@ public class fen_Admin extends javax.swing.JFrame {
                 .addGap(213, 213, 213)
                 .addGroup(jTabOccupationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addGroup(jTabOccupationLayout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(dateChooserOccupation, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(lbl_date, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(lbl_date, javax.swing.GroupLayout.DEFAULT_SIZE, 417, Short.MAX_VALUE))
                 .addGap(464, 464, 464))
+            .addGroup(jTabOccupationLayout.createSequentialGroup()
+                .addGap(274, 274, 274)
+                .addComponent(dateChooserOccupation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jTabOccupationLayout.setVerticalGroup(
             jTabOccupationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jTabOccupationLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lbl_date, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(dateChooserOccupation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -316,9 +375,39 @@ public class fen_Admin extends javax.swing.JFrame {
         // TODO add your handling code here:
         String salleSelectionnee = jComboBoxRefSalle.getSelectedItem().toString();
         String sportSelectionne = jComboBoxSport.getSelectedItem().toString();
+        if (ajouterSportSalle(salleSelectionnee, sportSelectionne))
+        {
+            JOptionPane.showMessageDialog(null, "Ajout effectué", " Info", JOptionPane.INFORMATION_MESSAGE);
+        }
         ajouterSportSalle(salleSelectionnee, sportSelectionne);
         afficherTableAccueillir();
     }//GEN-LAST:event_JbuttonCreerSportSalleMouseClicked
+
+    private void jTextFieldNomSportFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldNomSportFocusGained
+        // TODO add your handling code here:
+        jTextFieldNomSport.setText("");
+    }//GEN-LAST:event_jTextFieldNomSportFocusGained
+
+    private void jButtonAjoutSportMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAjoutSportMouseClicked
+        // TODO add your handling code here:
+        String sport = jTextFieldNomSport.getText();
+        if (!verifierSport(sport)) 
+        {
+            JOptionPane.showMessageDialog(null, "Ajout impossible", " Info", JOptionPane.INFORMATION_MESSAGE);
+           
+        }
+        else 
+            {
+                ajouterSport(sport);
+                 JOptionPane.showMessageDialog(null, "Ajout effectué", " Info", JOptionPane.INFORMATION_MESSAGE);
+            }
+    }//GEN-LAST:event_jButtonAjoutSportMouseClicked
+
+    private void jButtonModifierAssoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonModifierAssoMouseClicked
+        // TODO add your handling code here:
+        fen_modifierAssociation fenetre = new fen_modifierAssociation();
+        fenetre.setVisible(true);
+    }//GEN-LAST:event_jButtonModifierAssoMouseClicked
                                             
   
                                                  
@@ -366,6 +455,72 @@ public class fen_Admin extends javax.swing.JFrame {
         });        
       
     } 
+    public Boolean verifierSport(String sport)
+    {
+        Boolean retour = true;
+         Connection conn;
+                        Statement stmt;
+                        ResultSet rs;
+                        String pilote="org.gjt.mm.mysql.Driver";
+                        String url = "jdbc:mysql://localhost/gestiongymnase";                        
+                        try
+                        {
+                            Class.forName(pilote);
+                            conn = DriverManager.getConnection(url,"root","");
+                            stmt = conn.createStatement();
+                            rs = stmt.executeQuery("select * from sport where nomSport ='"+sport+"'");
+                            while (rs.next())
+                            {                         
+                                retour = false;
+                               
+                            }
+                            rs.close();
+                            stmt.close();
+                            conn.close();
+                        }
+                        catch (SQLException E)
+                        {
+                            System.out.println("SQLException" + E.getMessage());
+                            System.out.println("SQLState" + E.getSQLState());
+                            System.out.println("VendorError" + E.getErrorCode());
+                        }
+                        catch (ClassNotFoundException E)
+                        {
+                            E.printStackTrace();
+                        } 
+                        return retour;
+    }
+    public Boolean ajouterSport(String sport)
+    {
+         Connection conn;
+                        Statement stmt;
+                        ResultSet rs;
+                        String pilote="org.gjt.mm.mysql.Driver";
+                        String url = "jdbc:mysql://localhost/gestiongymnase";
+                        
+                        try
+                        {
+                            Class.forName(pilote);
+                            conn = DriverManager.getConnection(url,"root","");
+                            stmt = conn.createStatement();
+                            stmt.executeUpdate("INSERT INTO sport (nomSport) VALUES ('"+sport+"')");
+                           
+                            stmt.close();
+                            conn.close();
+                            
+                        }
+                        catch (SQLException E)
+                        {
+                            System.out.println("SQLException" + E.getMessage());
+                            System.out.println("SQLState" + E.getSQLState());
+                            System.out.println("VendorError" + E.getErrorCode());
+                        }
+                        catch (ClassNotFoundException E)
+                        {
+                            E.printStackTrace();
+                        }
+        return true;
+    }
     public void recupererSalles()
     {
         
@@ -411,7 +566,7 @@ public class fen_Admin extends javax.swing.JFrame {
                         Statement stmt;
                         ResultSet rs;
                         String pilote="org.gjt.mm.mysql.Driver";
-                        String url = new String("jdbc:mysql://localhost/gestiongymnase");
+                        String url = "jdbc:mysql://localhost/gestiongymnase";
                         
                         try
                         {
@@ -438,11 +593,10 @@ public class fen_Admin extends javax.swing.JFrame {
                         }
                         catch (ClassNotFoundException E)
                         {
-                            E.printStackTrace();
                         }
         
     }
-    public void ajouterSportSalle(String salleSelectionnee, String sportSelectionne )
+    public Boolean ajouterSportSalle(String salleSelectionnee, String sportSelectionne )
     {
        
                         Connection conn;
@@ -460,6 +614,7 @@ public class fen_Admin extends javax.swing.JFrame {
                            
                             stmt.close();
                             conn.close();
+                            
                         }
                         catch (SQLException E)
                         {
@@ -471,6 +626,8 @@ public class fen_Admin extends javax.swing.JFrame {
                         {
                             E.printStackTrace();
                         }
+                        return true;
+                        
     }
     public void afficherOccupationSalle(String DateReservation)
     {
@@ -478,7 +635,7 @@ public class fen_Admin extends javax.swing.JFrame {
                         Statement stmt;
                         ResultSet rs;
                         String pilote="org.gjt.mm.mysql.Driver";
-                        String url = new String("jdbc:mysql://localhost/gestiongymnase");
+                        String url = "jdbc:mysql://localhost/gestiongymnase";
                         
                         try
                         {
@@ -596,8 +753,12 @@ public class fen_Admin extends javax.swing.JFrame {
     private javax.swing.JButton JbuttonCreerSportSalle;
     private javax.swing.JButton buttonAjoutAsso;
     private datechooser.beans.DateChooserPanel dateChooserOccupation;
+    private javax.swing.JButton jButtonAjoutSport;
+    private javax.swing.JButton jButtonModifierAsso;
     private javax.swing.JComboBox<String> jComboBoxRefSalle;
     private javax.swing.JComboBox<String> jComboBoxSport;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabelEditer;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -610,6 +771,7 @@ public class fen_Admin extends javax.swing.JFrame {
     private javax.swing.JPanel jTabAssos;
     private javax.swing.JPanel jTabOccupation;
     private javax.swing.JTabbedPane jTabbedPaneAccueillir;
+    private javax.swing.JTextField jTextFieldNomSport;
     private javax.swing.JLabel lbl_date;
     private javax.swing.JTabbedPane tabbed_pane_admin;
     private javax.swing.JTable table_Association;

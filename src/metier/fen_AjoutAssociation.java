@@ -153,6 +153,7 @@ public class fen_AjoutAssociation extends javax.swing.JFrame {
     
     public void InsertAssocation()
     {
+                        
                         Connection conn;
                         Statement stmt;
                         ResultSet rs;
