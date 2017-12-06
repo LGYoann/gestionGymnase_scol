@@ -22,6 +22,7 @@ public class fen_AjoutAssociation extends javax.swing.JFrame {
      */
     public fen_AjoutAssociation() {
         initComponents();
+        this.setDefaultCloseOperation(fen_AjoutAssociation.DISPOSE_ON_CLOSE);
     }
 
     /**
