@@ -9,6 +9,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 /**
  *
@@ -46,8 +47,8 @@ public class fen_Admin extends javax.swing.JFrame {
         jTabOccupation = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         table_Reservation = new javax.swing.JTable();
-        jcalOccupation = new com.toedter.calendar.JCalendar();
         lbl_date = new javax.swing.JLabel();
+        dateChooserOccupation = new datechooser.beans.DateChooserPanel();
         jPanel4 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -85,7 +86,7 @@ public class fen_Admin extends javax.swing.JFrame {
             .addGroup(jTabAssosLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 215, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 242, Short.MAX_VALUE)
                 .addComponent(buttonAjoutAsso)
                 .addContainerGap())
         );
@@ -99,20 +100,20 @@ public class fen_Admin extends javax.swing.JFrame {
         jTabAccueilSalles.setLayout(jTabAccueilSallesLayout);
         jTabAccueilSallesLayout.setHorizontalGroup(
             jTabAccueilSallesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 659, Short.MAX_VALUE)
+            .addGap(0, 1089, Short.MAX_VALUE)
             .addGroup(jTabAccueilSallesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jTabAccueilSallesLayout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 639, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1065, Short.MAX_VALUE)
                     .addContainerGap()))
         );
         jTabAccueilSallesLayout.setVerticalGroup(
             jTabAccueilSallesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 459, Short.MAX_VALUE)
+            .addGap(0, 492, Short.MAX_VALUE)
             .addGroup(jTabAccueilSallesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jTabAccueilSallesLayout.createSequentialGroup()
                     .addGap(15, 15, 15)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 433, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 464, Short.MAX_VALUE)
                     .addContainerGap()))
         );
 
@@ -121,34 +122,40 @@ public class fen_Admin extends javax.swing.JFrame {
         table_Reservation.setModel(new ModeleTableReservation());
         jScrollPane3.setViewportView(table_Reservation);
 
-        jcalOccupation.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jcalOccupationMouseClicked(evt);
+        lbl_date.setText("selectionner la date pour lequel vous souhaité afficher les réservations :");
+
+        dateChooserOccupation.addSelectionChangedListener(new datechooser.events.SelectionChangedListener() {
+            public void onSelectionChange(datechooser.events.SelectionChangedEvent evt) {
+                dateChooserOccupationOnSelectionChange(evt);
             }
         });
-
-        lbl_date.setText("selectionner la date pour lequel vous souhaité afficher les réservations :");
 
         javax.swing.GroupLayout jTabOccupationLayout = new javax.swing.GroupLayout(jTabOccupation);
         jTabOccupation.setLayout(jTabOccupationLayout);
         jTabOccupationLayout.setHorizontalGroup(
             jTabOccupationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jTabOccupationLayout.createSequentialGroup()
-                .addContainerGap(169, Short.MAX_VALUE)
+            .addGroup(jTabOccupationLayout.createSequentialGroup()
                 .addGroup(jTabOccupationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbl_date)
-                    .addComponent(jcalOccupation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(144, 144, 144))
+                    .addGroup(jTabOccupationLayout.createSequentialGroup()
+                        .addGap(240, 240, 240)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jTabOccupationLayout.createSequentialGroup()
+                        .addGap(213, 213, 213)
+                        .addGroup(jTabOccupationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jTabOccupationLayout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(dateChooserOccupation, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(lbl_date))))
+                .addGap(464, 464, 464))
         );
         jTabOccupationLayout.setVerticalGroup(
             jTabOccupationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jTabOccupationLayout.createSequentialGroup()
-                .addContainerGap(13, Short.MAX_VALUE)
+                .addContainerGap()
                 .addComponent(lbl_date, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(dateChooserOccupation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jcalOccupation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -159,11 +166,11 @@ public class fen_Admin extends javax.swing.JFrame {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 659, Short.MAX_VALUE)
+            .addGap(0, 1089, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 459, Short.MAX_VALUE)
+            .addGap(0, 492, Short.MAX_VALUE)
         );
 
         tabbed_pane_admin.addTab("tab4", jPanel4);
@@ -190,9 +197,13 @@ public class fen_Admin extends javax.swing.JFrame {
            fenetre.setVisible(true);
     }//GEN-LAST:event_buttonAjoutAssoMouseClicked
 
-    private void jcalOccupationMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jcalOccupationMouseClicked
-        afficherOccupationSalle((Date) jcalOccupation.getCalendar().getTime());
-    }//GEN-LAST:event_jcalOccupationMouseClicked
+    private void dateChooserOccupationOnSelectionChange(datechooser.events.SelectionChangedEvent evt) {//GEN-FIRST:event_dateChooserOccupationOnSelectionChange
+        // TODO add your handling code here:
+         Date date = dateChooserOccupation.getSelectedDate().getTime();
+       SimpleDateFormat  simpleFormat = new SimpleDateFormat("yyyy-MM-dd");
+    System.out.println(simpleFormat.format(date));	
+      afficherOccupationSalle(simpleFormat.format(date)); 
+    }//GEN-LAST:event_dateChooserOccupationOnSelectionChange
                                             
   
                                                  
@@ -240,7 +251,7 @@ public class fen_Admin extends javax.swing.JFrame {
         });        
       
     }  
-    public void afficherOccupationSalle(Date DateReservation)
+    public void afficherOccupationSalle(String DateReservation)
     {
                         Connection conn;
                         Statement stmt;
@@ -253,7 +264,7 @@ public class fen_Admin extends javax.swing.JFrame {
                             Class.forName(pilote);
                             conn = DriverManager.getConnection(url,"root","");
                             stmt = conn.createStatement();
-                            rs = stmt.executeQuery("select * from reservation where date = "+ DateReservation);
+                            rs = stmt.executeQuery("select * from reservation where date = '"+ DateReservation +"'");
                             int i = 0;
                             while (rs.next())
                             {
@@ -362,6 +373,7 @@ public class fen_Admin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonAjoutAsso;
+    private datechooser.beans.DateChooserPanel dateChooserOccupation;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -369,7 +381,6 @@ public class fen_Admin extends javax.swing.JFrame {
     private javax.swing.JPanel jTabAccueilSalles;
     private javax.swing.JPanel jTabAssos;
     private javax.swing.JPanel jTabOccupation;
-    private com.toedter.calendar.JCalendar jcalOccupation;
     private javax.swing.JLabel lbl_date;
     private javax.swing.JTabbedPane tabbed_pane_admin;
     private javax.swing.JTable table_Association;
