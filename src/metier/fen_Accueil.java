@@ -26,7 +26,9 @@ public class fen_Accueil extends javax.swing.JFrame {
              nom = jText_username.getText();
              String passString = new String(jPassword_login.getPassword());
              Login(nom, passString);
+             
         });
+        this.getRootPane().setDefaultButton(jButton_login);
     }
     
     public void Login(String nom, String password) {
@@ -83,6 +85,11 @@ public class fen_Accueil extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
         setName("frame_login"); // NOI18N
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                formKeyPressed(evt);
+            }
+        });
 
         jButton_login.setText("Se connecter");
 
@@ -171,6 +178,16 @@ public class fen_Accueil extends javax.swing.JFrame {
         // TODO add your handling code here:
         jPassword_login.setText("");
     }//GEN-LAST:event_jPassword_loginFocusGained
+
+    private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode() == evt.VK_ENTER){
+            JOptionPane.showMessageDialog(null, "Coucou t'as cliqué", "Erreur", JOptionPane.INFORMATION_MESSAGE);
+            
+            jButton_login.doClick();
+        }
+        
+    }//GEN-LAST:event_formKeyPressed
 
     /**
      * @param args the command line arguments
