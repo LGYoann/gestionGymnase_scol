@@ -476,7 +476,6 @@ public class fen_Admin extends javax.swing.JFrame {
                             conn = DriverManager.getConnection(url,"root","");
                             stmt = conn.createStatement();
                             rs = stmt.executeQuery("select  * from salle");
-                            int i = 0;
                             while (rs.next())
                             {                             
                                 
@@ -514,7 +513,7 @@ public class fen_Admin extends javax.swing.JFrame {
                             conn = DriverManager.getConnection(url,"root","");
                             stmt = conn.createStatement();
                             rs = stmt.executeQuery("SELECT * FROM sport WHERE nomSport NOT IN (SELECT nomSportAutorise from accueillir where refSalle ='"+ salleSelectionnee+ "')");
-                            int i = 0;
+                            
                             while (rs.next())
                             {                             
                                
