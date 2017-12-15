@@ -45,19 +45,15 @@ public class fen_Admin extends javax.swing.JFrame {
         buttonAjoutAsso = new javax.swing.JButton();
         jButtonModifierAsso = new javax.swing.JButton();
         jTabAccueilSalles = new javax.swing.JPanel();
-        jTabbedPaneAccueillir = new javax.swing.JTabbedPane();
-        jPanel1 = new javax.swing.JPanel();
-        jScrollPane5 = new javax.swing.JScrollPane();
+        jScrollPane7 = new javax.swing.JScrollPane();
         table_gererAccueillir = new javax.swing.JTable();
-        jPanel2 = new javax.swing.JPanel();
-        jLabelEditer = new javax.swing.JLabel();
+        jLabelEditer2 = new javax.swing.JLabel();
         jComboBoxRefSalle = new javax.swing.JComboBox<>();
         jComboBoxSport = new javax.swing.JComboBox<>();
         JbuttonCreerSportSalle = new javax.swing.JButton();
-        jSeparator1 = new javax.swing.JSeparator();
-        jLabel1 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         jTextFieldNomSport = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
         jButtonAjoutSport = new javax.swing.JButton();
         jTabOccupation = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -96,7 +92,7 @@ public class fen_Admin extends javax.swing.JFrame {
             .addGroup(jTabAssosLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jTabAssosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1070, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1118, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jTabAssosLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jButtonModifierAsso)
@@ -118,35 +114,10 @@ public class fen_Admin extends javax.swing.JFrame {
 
         tabbed_pane_admin.addTab("Gérer les associations", jTabAssos);
 
-        jTabbedPaneAccueillir.setName(""); // NOI18N
-
         table_gererAccueillir.setModel(new ModeleTableAccueillir());
-        jScrollPane5.setViewportView(table_gererAccueillir);
+        jScrollPane7.setViewportView(table_gererAccueillir);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1089, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 1089, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 492, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 492, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-
-        jTabbedPaneAccueillir.addTab("Visualiser", jPanel1);
-
-        jLabelEditer.setText("Creez ici une nouvelle association sport / salle");
+        jLabelEditer2.setText("Creez ici une nouvelle association sport / salle");
 
         jComboBoxRefSalle.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -172,7 +143,9 @@ public class fen_Admin extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Ajouter une pratique sportive");
+        jLabel5.setText("Ajouter une pratique sportive");
+
+        jLabel6.setText("Nom du sport :");
 
         jTextFieldNomSport.setText("nom du sport");
         jTextFieldNomSport.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -181,8 +154,6 @@ public class fen_Admin extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setText("Nom du sport :");
-
         jButtonAjoutSport.setText("Ajouter");
         jButtonAjoutSport.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -190,78 +161,67 @@ public class fen_Admin extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jSeparator1)
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(0, 348, Short.MAX_VALUE)
-                .addComponent(jLabelEditer, javax.swing.GroupLayout.PREFERRED_SIZE, 399, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(342, 342, 342))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(362, 362, 362)
-                        .addComponent(jComboBoxRefSalle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(76, 76, 76)
-                        .addComponent(jComboBoxSport, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(307, 307, 307)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(39, 39, 39)
-                                .addComponent(jTextFieldNomSport, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(JbuttonCreerSportSalle)
-                        .addGap(435, 435, 435))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jButtonAjoutSport)
-                        .addGap(442, 442, 442))))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabelEditer)
-                .addGap(35, 35, 35)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBoxSport, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBoxRefSalle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
-                .addComponent(JbuttonCreerSportSalle)
-                .addGap(18, 18, 18)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel1)
-                .addGap(30, 30, 30)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldNomSport, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(49, 49, 49)
-                .addComponent(jButtonAjoutSport)
-                .addContainerGap(125, Short.MAX_VALUE))
-        );
-
-        jTabbedPaneAccueillir.addTab("Editer", jPanel2);
-
         javax.swing.GroupLayout jTabAccueilSallesLayout = new javax.swing.GroupLayout(jTabAccueilSalles);
         jTabAccueilSalles.setLayout(jTabAccueilSallesLayout);
         jTabAccueilSallesLayout.setHorizontalGroup(
             jTabAccueilSallesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPaneAccueillir)
+            .addGroup(jTabAccueilSallesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jTabAccueilSallesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelEditer2, javax.swing.GroupLayout.PREFERRED_SIZE, 399, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jTabAccueilSallesLayout.createSequentialGroup()
+                        .addComponent(jComboBoxRefSalle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(49, 49, 49)
+                        .addComponent(jComboBoxSport, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(44, 44, 44)
+                        .addComponent(JbuttonCreerSportSalle)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 206, Short.MAX_VALUE)
+                .addGroup(jTabAccueilSallesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jTabAccueilSallesLayout.createSequentialGroup()
+                        .addGroup(jTabAccueilSallesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jTabAccueilSallesLayout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addGap(39, 39, 39)
+                                .addComponent(jTextFieldNomSport, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jTabAccueilSallesLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonAjoutSport)))
+                .addGap(161, 161, 161))
+            .addGroup(jTabAccueilSallesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jTabAccueilSallesLayout.createSequentialGroup()
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 1118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         jTabAccueilSallesLayout.setVerticalGroup(
             jTabAccueilSallesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPaneAccueillir)
+            .addGroup(jTabAccueilSallesLayout.createSequentialGroup()
+                .addContainerGap(281, Short.MAX_VALUE)
+                .addGroup(jTabAccueilSallesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jTabAccueilSallesLayout.createSequentialGroup()
+                        .addComponent(jLabelEditer2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(72, 72, 72)
+                        .addGroup(jTabAccueilSallesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(JbuttonCreerSportSalle)
+                            .addComponent(jComboBoxSport, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBoxRefSalle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(122, 122, 122))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jTabAccueilSallesLayout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addGap(30, 30, 30)
+                        .addGroup(jTabAccueilSallesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jTextFieldNomSport, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6))
+                        .addGap(49, 49, 49)
+                        .addComponent(jButtonAjoutSport)
+                        .addGap(106, 106, 106))))
+            .addGroup(jTabAccueilSallesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jTabAccueilSallesLayout.createSequentialGroup()
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(269, Short.MAX_VALUE)))
         );
 
         tabbed_pane_admin.addTab("Accueil Salles", jTabAccueilSalles);
@@ -285,7 +245,7 @@ public class fen_Admin extends javax.swing.JFrame {
                 .addGap(213, 213, 213)
                 .addGroup(jTabOccupationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(dateChooserOccupation, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lbl_date, javax.swing.GroupLayout.DEFAULT_SIZE, 417, Short.MAX_VALUE))
+                    .addComponent(lbl_date, javax.swing.GroupLayout.DEFAULT_SIZE, 465, Short.MAX_VALUE))
                 .addGap(464, 464, 464))
             .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING)
         );
@@ -330,57 +290,6 @@ public class fen_Admin extends javax.swing.JFrame {
         afficherOccupationSalle(simpleFormat.format(date));
     }//GEN-LAST:event_dateChooserOccupationOnSelectionChange
 
-    private void jButtonAjoutSportMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAjoutSportMouseClicked
-        // TODO add your handling code here:
-        String sport = jTextFieldNomSport.getText();
-        if (!verifierSport(sport))
-        {
-            JOptionPane.showMessageDialog(null, "Ajout impossible", " Info", JOptionPane.INFORMATION_MESSAGE);
-
-        }
-        else
-        {
-            ajouterSport(sport);
-            JOptionPane.showMessageDialog(null, "Ajout effectué", " Info", JOptionPane.INFORMATION_MESSAGE);
-        }
-    }//GEN-LAST:event_jButtonAjoutSportMouseClicked
-
-    private void jTextFieldNomSportFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldNomSportFocusGained
-        // TODO add your handling code here:
-        jTextFieldNomSport.setText("");
-    }//GEN-LAST:event_jTextFieldNomSportFocusGained
-
-    private void JbuttonCreerSportSalleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JbuttonCreerSportSalleMouseClicked
-        // TODO add your handling code here:
-        String salleSelectionnee = jComboBoxRefSalle.getSelectedItem().toString();
-        String sportSelectionne = jComboBoxSport.getSelectedItem().toString();
-        if (ajouterSportSalle(salleSelectionnee, sportSelectionne))
-        {
-            JOptionPane.showMessageDialog(null, "Ajout effectué", " Info", JOptionPane.INFORMATION_MESSAGE);
-        }
-        ajouterSportSalle(salleSelectionnee, sportSelectionne);
-        afficherTableAccueillir();
-    }//GEN-LAST:event_JbuttonCreerSportSalleMouseClicked
-
-    private void jComboBoxSportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxSportActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBoxSportActionPerformed
-
-    private void jComboBoxSportItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxSportItemStateChanged
-        // TODO add your handling code here:
-        // String sportSelectionne = jComboBoxSport.getSelectedItem().toString();
-    }//GEN-LAST:event_jComboBoxSportItemStateChanged
-
-    private void jComboBoxRefSalleItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxRefSalleItemStateChanged
-        // TODO add your handling code here:
-        if (jComboBoxSport.getItemCount() > 0) {
-            jComboBoxSport.removeAllItems();
-        }
-
-        String salleSelectionnee = jComboBoxRefSalle.getSelectedItem().toString();
-        recupererSports(salleSelectionnee);
-    }//GEN-LAST:event_jComboBoxRefSalleItemStateChanged
-
     private void jButtonModifierAssoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonModifierAssoMouseClicked
         // TODO add your handling code here:
         fen_modifierAssociation fenetre = new fen_modifierAssociation();
@@ -392,6 +301,30 @@ public class fen_Admin extends javax.swing.JFrame {
         fen_AjoutAssociation fenetre = new fen_AjoutAssociation();
         fenetre.setVisible(true);
     }//GEN-LAST:event_buttonAjoutAssoMouseClicked
+
+    private void jComboBoxRefSalleItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxRefSalleItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxRefSalleItemStateChanged
+
+    private void jComboBoxSportItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxSportItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxSportItemStateChanged
+
+    private void jComboBoxSportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxSportActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxSportActionPerformed
+
+    private void JbuttonCreerSportSalleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JbuttonCreerSportSalleMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JbuttonCreerSportSalleMouseClicked
+
+    private void jTextFieldNomSportFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldNomSportFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldNomSportFocusGained
+
+    private void jButtonAjoutSportMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAjoutSportMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonAjoutSportMouseClicked
                                             
   
                                                  
@@ -626,14 +559,17 @@ public class fen_Admin extends javax.swing.JFrame {
                             Class.forName(pilote);
                             conn = DriverManager.getConnection(url,"root","");
                             stmt = conn.createStatement();
-                            rs = stmt.executeQuery("select * from reservation where date = '"+ DateReservation +"'");
+                            rs = stmt.executeQuery("select * from reservation, creneau where date = '"+ DateReservation +"'AND  reservation.creneau = creneau.noCreneau ");
                             int i = 0;
                             while (rs.next())
                             {
+                              String creneau;
                               
+                              creneau = rs.getString("heure_debut")+"-"+rs.getString("heure_fin");
+                              String pCreneau = creneau.replaceAll(":00:00", " h");
                                 table_Reservation.setValueAt(rs.getString("refSalle"),i,0);
                                 table_Reservation.setValueAt(rs.getString("date"),i,1);
-                                table_Reservation.setValueAt(rs.getString("heure"),i,2);
+                                table_Reservation.setValueAt(pCreneau,i,2);
                                 table_Reservation.setValueAt(rs.getString("refAsso"),i,3);
                                 i++;
                                
@@ -741,19 +677,15 @@ public class fen_Admin extends javax.swing.JFrame {
     private javax.swing.JButton jButtonModifierAsso;
     private javax.swing.JComboBox<String> jComboBoxRefSalle;
     private javax.swing.JComboBox<String> jComboBoxSport;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabelEditer;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabelEditer2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JPanel jTabAccueilSalles;
     private javax.swing.JPanel jTabAssos;
     private javax.swing.JPanel jTabOccupation;
-    private javax.swing.JTabbedPane jTabbedPaneAccueillir;
     private javax.swing.JTextField jTextFieldNomSport;
     private javax.swing.JLabel lbl_date;
     private javax.swing.JTabbedPane tabbed_pane_admin;
