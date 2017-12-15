@@ -304,6 +304,9 @@ public class fen_Admin extends javax.swing.JFrame {
 
     private void jComboBoxRefSalleItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxRefSalleItemStateChanged
         // TODO add your handling code here:
+        jComboBoxSport.removeAllItems();
+        recupererSports(String.valueOf(jComboBoxRefSalle.getSelectedItem()));
+                
     }//GEN-LAST:event_jComboBoxRefSalleItemStateChanged
 
     private void jComboBoxSportItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxSportItemStateChanged
