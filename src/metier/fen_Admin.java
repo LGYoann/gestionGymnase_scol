@@ -327,6 +327,18 @@ public class fen_Admin extends javax.swing.JFrame {
 
     private void jButtonAjoutSportMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAjoutSportMouseClicked
         // TODO add your handling code here:
+        String sport = jTextFieldNomSport.getText();
+        if (!verifierSport(sport))
+        {
+            JOptionPane.showMessageDialog(null, "Ajout impossible", "Info", JOptionPane.ERROR_MESSAGE);
+            
+            
+        }
+        else {
+              ajouterSport(sport);
+                JOptionPane.showMessageDialog(null, "Ajout effectué", "Info", JOptionPane.INFORMATION_MESSAGE);
+        }
+          
     }//GEN-LAST:event_jButtonAjoutSportMouseClicked
                                             
   
