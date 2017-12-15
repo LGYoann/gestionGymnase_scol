@@ -319,6 +319,14 @@ public class fen_Admin extends javax.swing.JFrame {
 
     private void JbuttonCreerSportSalleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JbuttonCreerSportSalleMouseClicked
         // TODO add your handling code here:
+        String salleSelectionnee = jComboBoxRefSalle.getSelectedItem().toString();
+        String sportSelectionne = jComboBoxSport.getSelectedItem().toString();
+        if (ajouterSportSalle(salleSelectionnee, sportSelectionne))
+        {
+            JOptionPane.showMessageDialog(null, "Ajout effectué", " Info", JOptionPane.INFORMATION_MESSAGE);
+        }
+        ajouterSportSalle(salleSelectionnee, sportSelectionne);
+        afficherTableAccueillir();
     }//GEN-LAST:event_JbuttonCreerSportSalleMouseClicked
 
     private void jTextFieldNomSportFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldNomSportFocusGained
