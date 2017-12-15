@@ -64,7 +64,6 @@ public class fen_Admin extends javax.swing.JFrame {
         table_Reservation = new javax.swing.JTable();
         lbl_date = new javax.swing.JLabel();
         dateChooserOccupation = new datechooser.beans.DateChooserPanel();
-        jPanel4 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -97,7 +96,7 @@ public class fen_Admin extends javax.swing.JFrame {
             .addGroup(jTabAssosLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jTabAssosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1074, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1070, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jTabAssosLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jButtonModifierAsso)
@@ -286,9 +285,9 @@ public class fen_Admin extends javax.swing.JFrame {
                 .addGap(213, 213, 213)
                 .addGroup(jTabOccupationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(dateChooserOccupation, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(lbl_date, javax.swing.GroupLayout.DEFAULT_SIZE, 421, Short.MAX_VALUE))
+                    .addComponent(lbl_date, javax.swing.GroupLayout.DEFAULT_SIZE, 417, Short.MAX_VALUE))
                 .addGap(464, 464, 464))
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         jTabOccupationLayout.setVerticalGroup(
             jTabOccupationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -297,31 +296,21 @@ public class fen_Admin extends javax.swing.JFrame {
                 .addComponent(lbl_date, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(dateChooserOccupation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
         tabbed_pane_admin.addTab("Occupation", jTabOccupation);
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1094, Short.MAX_VALUE)
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 522, Short.MAX_VALUE)
-        );
-
-        tabbed_pane_admin.addTab("tab4", jPanel4);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tabbed_pane_admin)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(tabbed_pane_admin)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -333,40 +322,33 @@ public class fen_Admin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void buttonAjoutAssoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonAjoutAssoMouseClicked
-        // TODO add your handling code here:
-          fen_AjoutAssociation fenetre = new fen_AjoutAssociation();
-           fenetre.setVisible(true);
-    }//GEN-LAST:event_buttonAjoutAssoMouseClicked
-
     private void dateChooserOccupationOnSelectionChange(datechooser.events.SelectionChangedEvent evt) {//GEN-FIRST:event_dateChooserOccupationOnSelectionChange
         // TODO add your handling code here:
-         Date date = dateChooserOccupation.getSelectedDate().getTime();
-       SimpleDateFormat  simpleFormat = new SimpleDateFormat("yyyy-MM-dd");
-    System.out.println(simpleFormat.format(date));	
-      afficherOccupationSalle(simpleFormat.format(date)); 
+        Date date = dateChooserOccupation.getSelectedDate().getTime();
+        SimpleDateFormat  simpleFormat = new SimpleDateFormat("yyyy-MM-dd");
+        System.out.println(simpleFormat.format(date));
+        afficherOccupationSalle(simpleFormat.format(date));
     }//GEN-LAST:event_dateChooserOccupationOnSelectionChange
 
-    private void jComboBoxRefSalleItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxRefSalleItemStateChanged
+    private void jButtonAjoutSportMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAjoutSportMouseClicked
         // TODO add your handling code here:
-        if (jComboBoxSport.getItemCount() > 0) {
-            jComboBoxSport.removeAllItems();
+        String sport = jTextFieldNomSport.getText();
+        if (!verifierSport(sport))
+        {
+            JOptionPane.showMessageDialog(null, "Ajout impossible", " Info", JOptionPane.INFORMATION_MESSAGE);
+
         }
-        
-        String salleSelectionnee = jComboBoxRefSalle.getSelectedItem().toString();
-        recupererSports(salleSelectionnee);
-        
-       
-    }//GEN-LAST:event_jComboBoxRefSalleItemStateChanged
+        else
+        {
+            ajouterSport(sport);
+            JOptionPane.showMessageDialog(null, "Ajout effectué", " Info", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_jButtonAjoutSportMouseClicked
 
-    private void jComboBoxSportItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxSportItemStateChanged
+    private void jTextFieldNomSportFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldNomSportFocusGained
         // TODO add your handling code here:
-       // String sportSelectionne = jComboBoxSport.getSelectedItem().toString();
-    }//GEN-LAST:event_jComboBoxSportItemStateChanged
-
-    private void jComboBoxSportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxSportActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBoxSportActionPerformed
+        jTextFieldNomSport.setText("");
+    }//GEN-LAST:event_jTextFieldNomSportFocusGained
 
     private void JbuttonCreerSportSalleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JbuttonCreerSportSalleMouseClicked
         // TODO add your handling code here:
@@ -380,31 +362,36 @@ public class fen_Admin extends javax.swing.JFrame {
         afficherTableAccueillir();
     }//GEN-LAST:event_JbuttonCreerSportSalleMouseClicked
 
-    private void jTextFieldNomSportFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldNomSportFocusGained
+    private void jComboBoxSportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxSportActionPerformed
         // TODO add your handling code here:
-        jTextFieldNomSport.setText("");
-    }//GEN-LAST:event_jTextFieldNomSportFocusGained
+    }//GEN-LAST:event_jComboBoxSportActionPerformed
 
-    private void jButtonAjoutSportMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAjoutSportMouseClicked
+    private void jComboBoxSportItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxSportItemStateChanged
         // TODO add your handling code here:
-        String sport = jTextFieldNomSport.getText();
-        if (!verifierSport(sport)) 
-        {
-            JOptionPane.showMessageDialog(null, "Ajout impossible", " Info", JOptionPane.INFORMATION_MESSAGE);
-           
+        // String sportSelectionne = jComboBoxSport.getSelectedItem().toString();
+    }//GEN-LAST:event_jComboBoxSportItemStateChanged
+
+    private void jComboBoxRefSalleItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxRefSalleItemStateChanged
+        // TODO add your handling code here:
+        if (jComboBoxSport.getItemCount() > 0) {
+            jComboBoxSport.removeAllItems();
         }
-        else 
-            {
-                ajouterSport(sport);
-                 JOptionPane.showMessageDialog(null, "Ajout effectué", " Info", JOptionPane.INFORMATION_MESSAGE);
-            }
-    }//GEN-LAST:event_jButtonAjoutSportMouseClicked
+
+        String salleSelectionnee = jComboBoxRefSalle.getSelectedItem().toString();
+        recupererSports(salleSelectionnee);
+    }//GEN-LAST:event_jComboBoxRefSalleItemStateChanged
 
     private void jButtonModifierAssoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonModifierAssoMouseClicked
         // TODO add your handling code here:
         fen_modifierAssociation fenetre = new fen_modifierAssociation();
         fenetre.setVisible(true);
     }//GEN-LAST:event_jButtonModifierAssoMouseClicked
+
+    private void buttonAjoutAssoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonAjoutAssoMouseClicked
+        // TODO add your handling code here:
+        fen_AjoutAssociation fenetre = new fen_AjoutAssociation();
+        fenetre.setVisible(true);
+    }//GEN-LAST:event_buttonAjoutAssoMouseClicked
                                             
   
                                                  
@@ -759,7 +746,6 @@ public class fen_Admin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelEditer;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane5;
