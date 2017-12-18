@@ -5,6 +5,7 @@
  */
 package metier;
 
+import java.util.Arrays;
 import javax.swing.table.AbstractTableModel;
 
 /**
@@ -13,7 +14,7 @@ import javax.swing.table.AbstractTableModel;
  */
 public class ModeleTableReservation  extends AbstractTableModel{
 
-    private String[] columnNames = {"référence de la salle","date","heure","référence de l'association"};
+    private String[] columnNames = {"référence de la salle","date","creneau","référence de l'association"};
     private Object[][] data= new Object[10][4];
     
     @Override
@@ -36,11 +37,32 @@ public class ModeleTableReservation  extends AbstractTableModel{
        return data[rowIndex][columnIndex];
     }
     
+    @Override
     public void setValueAt(Object value, int row, int col)
     {
         data[row][col] = value;
         fireTableCellUpdated(row, col);
         
     }
+
+    public void removeRow(int position){
+         
+        int indice = 0, indice2 = 0, nbRow = this.getRowCount()-1, nbCol = this.getColumnCount();
+        Object temp[][] = new Object[nbRow][nbCol];
+         
+        for(Object[] value : this.data){
+            if(indice != position){
+                temp[indice2++] = value;
+            }
+            indice++;
+        }
+        this.data = temp;
+        temp = null;
+        //Cette méthode permet d'avertir le tableau que les données ont été modifiées
+        //Ce qui permet une mise à jours complète du tableau
+        this.fireTableDataChanged();
+    }
+
+
     
 }

@@ -12,6 +12,8 @@ import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author C103-image
@@ -284,10 +286,16 @@ public class fen_Admin extends javax.swing.JFrame {
 
     private void dateChooserOccupationOnSelectionChange(datechooser.events.SelectionChangedEvent evt) {//GEN-FIRST:event_dateChooserOccupationOnSelectionChange
         // TODO add your handling code here:
+       ModeleTableReservation model = new ModeleTableReservation();
+       table_Reservation.setModel(model);
+       model.removeRow(0);
+        
+                
         Date date = dateChooserOccupation.getSelectedDate().getTime();
         SimpleDateFormat  simpleFormat = new SimpleDateFormat("yyyy-MM-dd");
         System.out.println(simpleFormat.format(date));
         afficherOccupationSalle(simpleFormat.format(date));
+        
     }//GEN-LAST:event_dateChooserOccupationOnSelectionChange
 
     private void jButtonModifierAssoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonModifierAssoMouseClicked
@@ -395,6 +403,7 @@ public class fen_Admin extends javax.swing.JFrame {
         });        
       
     } 
+   
     public Boolean verifierSport(String sport)
     {
         Boolean retour = true;
@@ -570,6 +579,13 @@ public class fen_Admin extends javax.swing.JFrame {
     }
     public void afficherOccupationSalle(String DateReservation)
     {
+           int rowCount = table_Reservation.getRowCount();
+       for (int i = rowCount - 1; i >= 0; i--)
+       {
+          // table_Reservation.removeRow(i);
+           
+          // ((DefaultTableModel)table_Reservation.getModel()).removeRow(i);	
+       } 
                         Connection conn;
                         Statement stmt;
                         ResultSet rs;
@@ -585,10 +601,12 @@ public class fen_Admin extends javax.swing.JFrame {
                             int i = 0;
                             while (rs.next())
                             {
+                                //table_Reservation.removeRow(0);
+                                        
                               String creneau;
                               
                               creneau = rs.getString("heure_debut")+"-"+rs.getString("heure_fin");
-                              String pCreneau = creneau.replaceAll(":00:00", " h");
+                              String pCreneau = creneau.replaceAll(":00:00", "h ");
                                 table_Reservation.setValueAt(rs.getString("refSalle"),i,0);
                                 table_Reservation.setValueAt(rs.getString("date"),i,1);
                                 table_Reservation.setValueAt(pCreneau,i,2);

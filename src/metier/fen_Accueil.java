@@ -6,7 +6,6 @@
 package metier;
 
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.*;
 import javax.swing.*;/**
@@ -20,13 +19,11 @@ public class fen_Accueil extends javax.swing.JFrame {
      * Creates new form fen_Accueil
      */
     public fen_Accueil() {
-        initComponents();
-        
+        initComponents();        
          jButton_login.addActionListener((ActionEvent e) -> {
              nom = jText_username.getText();
              String passString = new String(jPassword_login.getPassword());
-             Login(nom, passString);
-             
+             Login(nom, passString);             
         });
         this.getRootPane().setDefaultButton(jButton_login);
     }
