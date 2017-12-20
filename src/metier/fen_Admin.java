@@ -40,6 +40,7 @@ public class fen_Admin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton1 = new javax.swing.JButton();
         tabbed_pane_admin = new javax.swing.JTabbedPane();
         jTabAssos = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -62,6 +63,15 @@ public class fen_Admin extends javax.swing.JFrame {
         table_Reservation = new javax.swing.JTable();
         lbl_date = new javax.swing.JLabel();
         dateChooserOccupation = new datechooser.beans.DateChooserPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        cbxSalle = new javax.swing.JComboBox<>();
+        cbxCreneau = new javax.swing.JComboBox<>();
+        cbxAsso = new javax.swing.JComboBox<>();
+        btnReserver = new javax.swing.JButton();
+
+        jButton1.setText("jButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -239,28 +249,81 @@ public class fen_Admin extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setText("jLabel1");
+
+        jLabel2.setText("jLabel2");
+
+        jLabel3.setText("jLabel3");
+
+        cbxSalle.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbxSalleItemStateChanged(evt);
+            }
+        });
+
+        btnReserver.setText("Reserver");
+
         javax.swing.GroupLayout jTabOccupationLayout = new javax.swing.GroupLayout(jTabOccupation);
         jTabOccupation.setLayout(jTabOccupationLayout);
         jTabOccupationLayout.setHorizontalGroup(
             jTabOccupationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jTabOccupationLayout.createSequentialGroup()
-                .addGap(213, 213, 213)
+                .addGap(21, 21, 21)
                 .addGroup(jTabOccupationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(dateChooserOccupation, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lbl_date, javax.swing.GroupLayout.DEFAULT_SIZE, 465, Short.MAX_VALUE))
-                .addGap(464, 464, 464))
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jTabOccupationLayout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)
+                        .addComponent(cbxCreneau, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jTabOccupationLayout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(18, 18, 18)
+                        .addComponent(cbxAsso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jTabOccupationLayout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
+                        .addComponent(cbxSalle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jTabOccupationLayout.createSequentialGroup()
+                        .addGap(59, 59, 59)
+                        .addComponent(btnReserver)))
+                .addGap(54, 54, 54)
+                .addGroup(jTabOccupationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jTabOccupationLayout.createSequentialGroup()
+                        .addComponent(lbl_date, javax.swing.GroupLayout.DEFAULT_SIZE, 461, Short.MAX_VALUE)
+                        .addGap(464, 464, 464))))
+            .addGroup(jTabOccupationLayout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addComponent(dateChooserOccupation, javax.swing.GroupLayout.PREFERRED_SIZE, 1053, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jTabOccupationLayout.setVerticalGroup(
             jTabOccupationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jTabOccupationLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lbl_date, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(dateChooserOccupation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGroup(jTabOccupationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jTabOccupationLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(dateChooserOccupation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jTabOccupationLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jTabOccupationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(cbxSalle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jTabOccupationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(cbxCreneau, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jTabOccupationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(cbxAsso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(45, 45, 45)
+                        .addComponent(btnReserver)
+                        .addGap(61, 61, 61))))
         );
 
         tabbed_pane_admin.addTab("Occupation", jTabOccupation);
@@ -285,16 +348,37 @@ public class fen_Admin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void dateChooserOccupationOnSelectionChange(datechooser.events.SelectionChangedEvent evt) {//GEN-FIRST:event_dateChooserOccupationOnSelectionChange
-        // TODO add your handling code here:
+       // TODO add your handling code here:
        ModeleTableReservation model = new ModeleTableReservation();
        table_Reservation.setModel(model);
        model.removeRow(0);
         
-                
+        SimpleDateFormat  simpleFormat = new SimpleDateFormat("yyyy-MM-dd");        
         Date date = dateChooserOccupation.getSelectedDate().getTime();
-        SimpleDateFormat  simpleFormat = new SimpleDateFormat("yyyy-MM-dd");
-        System.out.println(simpleFormat.format(date));
+        Date datejour = new Date();
+        System.out.println(datejour);
+        if(date.before(datejour)){
+            cbxSalle.setVisible(false);
+            cbxCreneau.setVisible(false);
+            cbxAsso.setVisible(false);
+            jLabel1.setVisible(false);
+            jLabel2.setVisible(false);
+            jLabel3.setVisible(false);
+            btnReserver.setVisible(false);
+
+        }
+        else{
+            cbxSalle.setVisible(true);
+            cbxCreneau.setVisible(true);
+            cbxAsso.setVisible(true);
+            jLabel1.setVisible(true);
+            jLabel2.setVisible(true);
+            jLabel3.setVisible(true);
+            btnReserver.setVisible(true);
+        }
         afficherOccupationSalle(simpleFormat.format(date));
+        cbxSalle.removeAllItems();
+        recupererSallesOccupation();
         
     }//GEN-LAST:event_dateChooserOccupationOnSelectionChange
 
@@ -314,6 +398,7 @@ public class fen_Admin extends javax.swing.JFrame {
         // TODO add your handling code here:
         jComboBoxSport.removeAllItems();
         recupererSports(String.valueOf(jComboBoxRefSalle.getSelectedItem()));
+        
                 
     }//GEN-LAST:event_jComboBoxRefSalleItemStateChanged
 
@@ -356,6 +441,15 @@ public class fen_Admin extends javax.swing.JFrame {
         }
           
     }//GEN-LAST:event_jButtonAjoutSportMouseClicked
+
+    private void cbxSalleItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbxSalleItemStateChanged
+        // TODO add your handling code here:
+         // TODO add your handling code here:
+         String salleSelectionnee = cbxSalle.getSelectedItem().toString();   
+         Date date = dateChooserOccupation.getSelectedDate().getTime();
+         cbxCreneau.removeAllItems();
+        recupererCreneau( salleSelectionnee,  date);
+    }//GEN-LAST:event_cbxSalleItemStateChanged
                                             
   
                                                  
@@ -578,15 +672,7 @@ public class fen_Admin extends javax.swing.JFrame {
                         
     }
     public void afficherOccupationSalle(String DateReservation)
-    {
-           int rowCount = table_Reservation.getRowCount();
-       for (int i = rowCount - 1; i >= 0; i--)
-       {
-          // table_Reservation.removeRow(i);
-           
-          // ((DefaultTableModel)table_Reservation.getModel()).removeRow(i);	
-       } 
-                        Connection conn;
+    {                   Connection conn;
                         Statement stmt;
                         ResultSet rs;
                         String pilote="org.gjt.mm.mysql.Driver";
@@ -707,16 +793,104 @@ public class fen_Admin extends javax.swing.JFrame {
                             E.printStackTrace();
                         }
             }
+     public void recupererSallesOccupation()
+    {
+        
+         Connection conn;
+                        Statement stmt;
+                        ResultSet rs;
+                        String pilote="org.gjt.mm.mysql.Driver";
+                        String url = "jdbc:mysql://localhost/gestiongymnase";
+                        
+                        try
+                        {
+                            Class.forName(pilote);
+                            conn = DriverManager.getConnection(url,"root","");
+                            stmt = conn.createStatement();
+                            rs = stmt.executeQuery("select  * from salle");
+                            int i = 0;
+                            while (rs.next())
+                            {                             
+                                
+                                cbxSalle.addItem(rs.getString("refSalle"));
+                               
+                            }
+                            rs.close();
+                            stmt.close();
+                            conn.close();
+                        }
+                        catch (SQLException E)
+                        {
+                            System.out.println("SQLException" + E.getMessage());
+                            System.out.println("SQLState" + E.getSQLState());
+                            System.out.println("VendorError" + E.getErrorCode());
+                        }
+                        catch (ClassNotFoundException E)
+                        {
+                            E.printStackTrace();
+                        }
+        
+    }
+      public void recupererCreneau(String salle, Date pdate)
+    {
+        
+         Connection conn;
+                        Statement stmt;
+                        ResultSet rs;
+                        String pilote="org.gjt.mm.mysql.Driver";
+                        String url = "jdbc:mysql://localhost/gestiongymnase";
+                        
+                        try
+                        {
+                            Class.forName(pilote);
+                            conn = DriverManager.getConnection(url,"root","");
+                            stmt = conn.createStatement();
+                            rs = stmt.executeQuery("select * from creneau where noCreneau not in (Select creneau from reservation where date='"+pdate+"' and refSalle='"+salle+"')");
+                            System.out.println(pdate);
+                            System.out.println(salle);
+
+                            while (rs.next())
+                            {                
+                               ComboItem ci= new ComboItem(rs.getString("noCreneau"),rs.getString("heure_debut"));
+                               cbxCreneau.addItem(ci);
+                               
+                            }
+                            
+                            rs.close();
+                            stmt.close();
+                            conn.close();
+                        }
+                        catch (SQLException E)
+                        {
+                            System.out.println("SQLException" + E.getMessage());
+                            System.out.println("SQLState" + E.getSQLState());
+                            System.out.println("VendorError" + E.getErrorCode());
+                        }
+                        catch (ClassNotFoundException E)
+                        {
+                            E.printStackTrace();
+                        }
+        
+    }
+     
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton JbuttonCreerSportSalle;
+    private javax.swing.JButton btnReserver;
     private javax.swing.JButton buttonAjoutAsso;
+    private javax.swing.JComboBox<String> cbxAsso;
+    private javax.swing.JComboBox<ComboItem> cbxCreneau;
+    private javax.swing.JComboBox<String> cbxSalle;
     private datechooser.beans.DateChooserPanel dateChooserOccupation;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonAjoutSport;
     private javax.swing.JButton jButtonModifierAsso;
     private javax.swing.JComboBox<String> jComboBoxRefSalle;
     private javax.swing.JComboBox<String> jComboBoxSport;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabelEditer2;
