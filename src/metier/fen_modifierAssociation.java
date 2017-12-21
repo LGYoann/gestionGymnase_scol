@@ -10,6 +10,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -28,16 +29,22 @@ public class fen_modifierAssociation extends javax.swing.JFrame {
         jTextFieldNewVilleAsso.setEnabled(false);
         jTextFieldNewAdresseAsso.setEnabled(false);
         jTextFieldNewResponsableAsso.setEnabled(false);
+        jTextFieldNewRefAsso.setText("");
+        
+        jTextFieldNewVilleAsso.setText("");
+             
+        jTextFieldNewAdresseAsso.setText("");
+     
+        jTextFieldNewResponsableAsso.setText("");
     }
      public void recupererAssos()
     {
-        
+        Boolean retour = false;
          Connection conn;
                         Statement stmt;
                         ResultSet rs;
                         String pilote="org.gjt.mm.mysql.Driver";
-                        String url = "jdbc:mysql://localhost/gestiongymnase";
-                        
+                        String url = "jdbc:mysql://localhost/gestiongymnase";                        
                         try
                         {
                             Class.forName(pilote);
@@ -46,7 +53,7 @@ public class fen_modifierAssociation extends javax.swing.JFrame {
                             rs = stmt.executeQuery("select  * from association");
                             int i = 0;
                             while (rs.next())
-                            {                             
+                            {                         
                                 
                                 jComboBoxModifAsso.addItem(rs.getString("refAsso"));
                                
@@ -67,23 +74,133 @@ public class fen_modifierAssociation extends javax.swing.JFrame {
                         }
         
     }
-     public void checkChoices(){
-        if (jCheckBoxRefAsso.isEnabled())
-        {
-            jTextFieldNewRefAsso.setEditable(true);             
+     public Boolean checkChoices(){
+        String refAssoSelected = jComboBoxModifAsso.getSelectedItem().toString();
+        Boolean retour = false;
+       
+         if (jTextFieldNewVilleAsso.isEnabled())     
+         {
+            
+             String NouvelleVille = jTextFieldNewVilleAsso.getText(); 
+               Connection conn;
+                        Statement stmt;
+                        ResultSet rs;
+                        String pilote="org.gjt.mm.mysql.Driver";
+                        String url = "jdbc:mysql://localhost/gestiongymnase";                        
+                        try
+                        {
+                            Class.forName(pilote);
+                            conn = DriverManager.getConnection(url,"root","");
+                            stmt = conn.createStatement();
+                            stmt.executeUpdate("UPDATE `association` SET ville='"+NouvelleVille+"' WHERE `refAsso`= '"+refAssoSelected+ "'");
+                            retour = true;
+                            stmt.close();
+                            conn.close();
+                        }
+                        catch (SQLException E)
+                        {
+                            System.out.println("SQLException" + E.getMessage());
+                            System.out.println("SQLState" + E.getSQLState());
+                            System.out.println("VendorError" + E.getErrorCode());
+                        }
+                        catch (ClassNotFoundException E)
+                        {
+                            E.printStackTrace();
+                        }
+                     
         }
-         if (jCheckBoxVilleAsso.isEnabled())
-        {
-            jTextFieldNewVilleAsso.setEditable(true);             
+        
+         if (jTextFieldNewAdresseAsso.isEnabled())     
+         {
+            
+               String NouvelleAdresseAsso = jTextFieldNewAdresseAsso.getText();
+                Connection conn;
+                        Statement stmt;
+                        ResultSet rs;
+                        String pilote="org.gjt.mm.mysql.Driver";
+                        String url = "jdbc:mysql://localhost/gestiongymnase";                        
+                        try
+                        {
+                            Class.forName(pilote);
+                            conn = DriverManager.getConnection(url,"root","");
+                            stmt = conn.createStatement();
+                            stmt.executeUpdate("UPDATE `association` SET adresse='"+NouvelleAdresseAsso+"' WHERE `refAsso`= '"+refAssoSelected+ "'");
+                            stmt.close();
+                            conn.close();
+                            retour = true;
+                        }
+                        catch (SQLException E)
+                        {
+                            System.out.println("SQLException" + E.getMessage());
+                            System.out.println("SQLState" + E.getSQLState());
+                            System.out.println("VendorError" + E.getErrorCode());
+                        }
+                        catch (ClassNotFoundException E)
+                        {
+                            E.printStackTrace();
+                        }
         }
-         if (jCheckBoxAdresseAsso.isEnabled())
-        {
-            jTextFieldNewAdresseAsso.setEditable(true);             
+         if (jTextFieldNewResponsableAsso.isEnabled())
+        {               
+           
+            String NouveauResponsable = jTextFieldNewResponsableAsso.getText();
+             Connection conn;
+                        Statement stmt;
+                        ResultSet rs;
+                        String pilote="org.gjt.mm.mysql.Driver";
+                        String url = "jdbc:mysql://localhost/gestiongymnase";                        
+                        try
+                        {
+                            Class.forName(pilote);
+                            conn = DriverManager.getConnection(url,"root","");
+                            stmt = conn.createStatement();
+                             stmt.executeUpdate("UPDATE `association` SET nomResponsable='"+NouveauResponsable+"' WHERE `refAsso`= '"+refAssoSelected+ "'");
+                            stmt.close();
+                            conn.close();
+                            retour = true;
+                        }
+                        catch (SQLException E)
+                        {
+                            System.out.println("SQLException" + E.getMessage());
+                            System.out.println("SQLState" + E.getSQLState());
+                            System.out.println("VendorError" + E.getErrorCode());
+                        }
+                        catch (ClassNotFoundException E)
+                        {
+                            E.printStackTrace();
+                        }
         }
-         if (jCheckBoxRespAsso.isEnabled())
+         if (jTextFieldNewRefAsso.isEnabled())       
         {
-            jTextFieldNewResponsableAsso.setEditable(true);             
+            String NouvelleRefAsso = jTextFieldNewRefAsso.getText();
+             Connection conn;
+                        Statement stmt;
+                        ResultSet rs;
+                        String pilote="org.gjt.mm.mysql.Driver";
+                        String url = "jdbc:mysql://localhost/gestiongymnase";                        
+                        try
+                        {
+                            Class.forName(pilote);
+                            conn = DriverManager.getConnection(url,"root","");
+                            stmt = conn.createStatement();
+                            stmt.executeUpdate("UPDATE `association` SET refAsso='"+NouvelleRefAsso+"' WHERE `refAsso`= '"+refAssoSelected+ "'");
+                            stmt.close();
+                            conn.close();
+                            retour = true;
+                        }
+                        catch (SQLException E)
+                        {
+                            System.out.println("SQLException" + E.getMessage());
+                            System.out.println("SQLState" + E.getSQLState());
+                            System.out.println("VendorError" + E.getErrorCode());
+                        }
+                        catch (ClassNotFoundException E)
+                        {
+                            E.printStackTrace();
+                        }
+                      
         }
+         return retour;
          
      }
     public Boolean InsertAssocation(String prefAsso)
@@ -214,6 +331,24 @@ public class fen_modifierAssociation extends javax.swing.JFrame {
             }
         });
 
+        jCheckBoxVilleAsso.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jCheckBoxVilleAssoMouseClicked(evt);
+            }
+        });
+
+        jCheckBoxRespAsso.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jCheckBoxRespAssoMouseClicked(evt);
+            }
+        });
+
+        jCheckBoxAdresseAsso.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jCheckBoxAdresseAssoMouseClicked(evt);
+            }
+        });
+
         jLabel6.setText("Cochez le ou les champs à modifier :");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -296,28 +431,34 @@ public class fen_modifierAssociation extends javax.swing.JFrame {
 
     private void jButtonValiderChangementsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonValiderChangementsMouseClicked
         // TODO add your handling code here:
-        String refAsso = jComboBoxModifAsso.getSelectedItem().toString();
-        InsertAssocation(refAsso);
+       // String refAsso = jComboBoxModifAsso.getSelectedItem().toString();
+       if (checkChoices())
+       {
+           checkChoices();
+           JOptionPane.showMessageDialog(null, "Modification effectuée", " Info", JOptionPane.INFORMATION_MESSAGE);
+       }
+       else JOptionPane.showMessageDialog(null, "Modification impossible", " Info", JOptionPane.ERROR_MESSAGE);
+      
     }//GEN-LAST:event_jButtonValiderChangementsMouseClicked
 
     private void jTextFieldNewRefAssoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldNewRefAssoFocusGained
         // TODO add your handling code here:
-        jTextFieldNewRefAsso.setText("");
+        
     }//GEN-LAST:event_jTextFieldNewRefAssoFocusGained
 
     private void jTextFieldNewVilleAssoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldNewVilleAssoFocusGained
         // TODO add your handling code here:
-        jTextFieldNewVilleAsso.setText("");
+       
     }//GEN-LAST:event_jTextFieldNewVilleAssoFocusGained
 
     private void jTextFieldNewAdresseAssoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldNewAdresseAssoFocusGained
         // TODO add your handling code here:
-        jTextFieldNewAdresseAsso.setText("");
+       
     }//GEN-LAST:event_jTextFieldNewAdresseAssoFocusGained
 
     private void jTextFieldNewResponsableAssoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldNewResponsableAssoFocusGained
         // TODO add your handling code here:
-        jTextFieldNewResponsableAsso.setText("");
+       
     }//GEN-LAST:event_jTextFieldNewResponsableAssoFocusGained
 
     private void jCheckBoxRefAssoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxRefAssoActionPerformed
@@ -328,14 +469,56 @@ public class fen_modifierAssociation extends javax.swing.JFrame {
 
     private void jCheckBoxRefAssoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCheckBoxRefAssoMouseClicked
         // TODO add your handling code here:
-           if (jCheckBoxRefAsso.isEnabled())
+        boolean chkbox = jCheckBoxRefAsso.isSelected();
+           if (chkbox)
         {
             jTextFieldNewRefAsso.setEnabled(true);             
         }
-        else  {
+           else 
+        {
             jTextFieldNewRefAsso.setEnabled(false);
-        }  
+        }
+        
     }//GEN-LAST:event_jCheckBoxRefAssoMouseClicked
+
+    private void jCheckBoxVilleAssoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCheckBoxVilleAssoMouseClicked
+        // TODO add your handling code here:
+         boolean chkbox = jCheckBoxVilleAsso.isSelected();
+           if (chkbox)
+        {
+            jTextFieldNewVilleAsso.setEnabled(true);             
+        }
+           else 
+        {
+            jTextFieldNewVilleAsso.setEnabled(false);
+        }
+    }//GEN-LAST:event_jCheckBoxVilleAssoMouseClicked
+
+    private void jCheckBoxAdresseAssoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCheckBoxAdresseAssoMouseClicked
+        // TODO add your handling code here:
+            boolean chkbox = jCheckBoxAdresseAsso.isSelected();
+           if (chkbox)
+        {
+            jTextFieldNewAdresseAsso.setEnabled(true);             
+        }
+           else 
+        {
+            jTextFieldNewAdresseAsso.setEnabled(false);
+        }
+    }//GEN-LAST:event_jCheckBoxAdresseAssoMouseClicked
+
+    private void jCheckBoxRespAssoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCheckBoxRespAssoMouseClicked
+        // TODO add your handling code here:
+              boolean chkbox = jCheckBoxRespAsso.isSelected();
+           if (chkbox)
+        {
+            jTextFieldNewResponsableAsso.setEnabled(true);             
+        }
+           else 
+        {
+            jTextFieldNewResponsableAsso.setEnabled(false);
+        }
+    }//GEN-LAST:event_jCheckBoxRespAssoMouseClicked
 
     /**
      * @param args the command line arguments
