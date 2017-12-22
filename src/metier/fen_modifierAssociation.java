@@ -5,6 +5,7 @@
  */
 package metier;
 
+import java.awt.Frame;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -435,7 +436,19 @@ public class fen_modifierAssociation extends javax.swing.JFrame {
        if (checkChoices())
        {
            checkChoices();
-           JOptionPane.showMessageDialog(null, "Modification effectuée", " Info", JOptionPane.INFORMATION_MESSAGE);
+           JOptionPane.showMessageDialog(null, "Modification effectuée", " Info", JOptionPane.INFORMATION_MESSAGE); 
+           
+                 
+           Frame[] frames = Frame.getFrames();
+           for (Frame unFrame :frames)
+           {
+               
+                   unFrame.dispose();
+               
+           }
+           fen_Admin fenetreAdmin = new fen_Admin();          
+          
+           fenetreAdmin.setVisible(true);
        }
        else JOptionPane.showMessageDialog(null, "Modification impossible", " Info", JOptionPane.ERROR_MESSAGE);
       
