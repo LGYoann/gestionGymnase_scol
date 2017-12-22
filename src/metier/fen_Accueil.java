@@ -23,7 +23,7 @@ public class fen_Accueil extends javax.swing.JFrame {
          jButton_login.addActionListener((ActionEvent e) -> {
              nom = jText_username.getText();
              String passString = new String(jPassword_login.getPassword());
-             Login(nom, passString);             
+             Login("dupond", "albert");             
         });
         this.getRootPane().setDefaultButton(jButton_login);
     }

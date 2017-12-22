@@ -10,8 +10,8 @@ import javax.swing.table.TableModel;
  */
 public class ModeleTableAccueillir extends AbstractTableModel{
 
-    private String[] columnNames = {"référence de la salle","Nom du sport autorisé"};
-    private Object[][] data= new Object[10][2];
+    private String[] columnNames = {"Référence de la salle","Nom du sport autorisé"};
+    private Object[][] data= new Object[30][2];
     
     @Override
     public int getRowCount() {
@@ -33,6 +33,7 @@ public class ModeleTableAccueillir extends AbstractTableModel{
        return data[rowIndex][columnIndex];
     }
     
+    @Override
     public void setValueAt(Object value, int row, int col)
     {
         data[row][col] = value;

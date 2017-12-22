@@ -29,6 +29,7 @@ public class fen_Admin extends javax.swing.JFrame {
         afficherTableAssociation();
         afficherTableAccueillir();   
         recupererSalles();
+        statistiques();
     }   
 
     /**
@@ -70,6 +71,15 @@ public class fen_Admin extends javax.swing.JFrame {
         cbxCreneau = new javax.swing.JComboBox<>();
         cbxAsso = new javax.swing.JComboBox<>();
         btnReserver = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        lblSportMoins = new javax.swing.JLabel();
+        lblSportPlus = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        lblSallePlus = new javax.swing.JLabel();
+        lblSalleMoins = new javax.swing.JLabel();
 
         jButton1.setText("jButton1");
 
@@ -249,15 +259,21 @@ public class fen_Admin extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("jLabel1");
+        jLabel1.setText("Salle");
 
-        jLabel2.setText("jLabel2");
+        jLabel2.setText("Créneau");
 
-        jLabel3.setText("jLabel3");
+        jLabel3.setText("Association");
 
         cbxSalle.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cbxSalleItemStateChanged(evt);
+            }
+        });
+
+        cbxCreneau.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxCreneauActionPerformed(evt);
             }
         });
 
@@ -271,20 +287,18 @@ public class fen_Admin extends javax.swing.JFrame {
                 .addGap(21, 21, 21)
                 .addGroup(jTabOccupationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jTabOccupationLayout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
-                        .addComponent(cbxCreneau, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jTabOccupationLayout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(18, 18, 18)
-                        .addComponent(cbxAsso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jTabOccupationLayout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(cbxSalle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jTabOccupationLayout.createSequentialGroup()
                         .addGap(59, 59, 59)
-                        .addComponent(btnReserver)))
+                        .addComponent(btnReserver))
+                    .addGroup(jTabOccupationLayout.createSequentialGroup()
+                        .addGroup(jTabOccupationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel1))
+                        .addGap(18, 18, 18)
+                        .addGroup(jTabOccupationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cbxSalle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cbxCreneau, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cbxAsso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(54, 54, 54)
                 .addGroup(jTabOccupationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -305,11 +319,11 @@ public class fen_Admin extends javax.swing.JFrame {
                     .addGroup(jTabOccupationLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(dateChooserOccupation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jTabOccupationLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 239, Short.MAX_VALUE)
                         .addGroup(jTabOccupationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
                             .addComponent(cbxSalle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -327,6 +341,71 @@ public class fen_Admin extends javax.swing.JFrame {
         );
 
         tabbed_pane_admin.addTab("Occupation", jTabOccupation);
+
+        jLabel7.setText("Association qui a la plus reservée ");
+
+        jLabel8.setText("Salle la plus reservée");
+
+        jLabel10.setText("Association qui a la moins reservé");
+
+        lblSportMoins.setText("jLabel11");
+
+        lblSportPlus.setText("jLabel11");
+
+        jLabel9.setText("Salle la moins reservée");
+
+        lblSallePlus.setText("jLabel11");
+
+        lblSalleMoins.setText("jLabel11");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(42, 42, 42)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel9)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblSalleMoins))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel8)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblSallePlus))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel10)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblSportMoins))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addGap(65, 65, 65)
+                        .addComponent(lblSportPlus)))
+                .addContainerGap(792, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(65, 65, 65)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(lblSportPlus, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(lblSportMoins))
+                .addGap(45, 45, 45)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblSallePlus))
+                .addGap(37, 37, 37)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(lblSalleMoins))
+                .addContainerGap(262, Short.MAX_VALUE))
+        );
+
+        tabbed_pane_admin.addTab("Statistiques", jPanel1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -352,7 +431,7 @@ public class fen_Admin extends javax.swing.JFrame {
        ModeleTableReservation model = new ModeleTableReservation();
        table_Reservation.setModel(model);
        model.removeRow(0);
-        
+       //cbxSalle.removeAllItems();
         SimpleDateFormat  simpleFormat = new SimpleDateFormat("yyyy-MM-dd");        
         Date date = dateChooserOccupation.getSelectedDate().getTime();
         Date datejour = new Date();
@@ -377,7 +456,7 @@ public class fen_Admin extends javax.swing.JFrame {
             btnReserver.setVisible(true);
         }
         afficherOccupationSalle(simpleFormat.format(date));
-        cbxSalle.removeAllItems();
+     
         recupererSallesOccupation();
         
     }//GEN-LAST:event_dateChooserOccupationOnSelectionChange
@@ -450,6 +529,10 @@ public class fen_Admin extends javax.swing.JFrame {
          cbxCreneau.removeAllItems();
         recupererCreneau( salleSelectionnee,  date);
     }//GEN-LAST:event_cbxSalleItemStateChanged
+
+    private void cbxCreneauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxCreneauActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbxCreneauActionPerformed
                                             
   
                                                  
@@ -563,6 +646,131 @@ public class fen_Admin extends javax.swing.JFrame {
                             E.printStackTrace();
                         }
         return true;
+    }
+    private void getStatSport()
+    {
+        Connection conn;
+                        Statement stmt;
+                        ResultSet rs;
+                        String pilote="org.gjt.mm.mysql.Driver";
+                        String url = "jdbc:mysql://localhost/gestiongymnase";
+                        
+                        try
+                        {
+                            Class.forName(pilote);
+                            conn = DriverManager.getConnection(url,"root","");
+                            stmt = conn.createStatement();
+                            rs = stmt.executeQuery("SELECT refAsso, COUNT(*) FROM reservation GROUP BY refAsso");
+                            
+                        
+                                                         
+                               
+                                rs.next();
+                                lblSportPlus.setText(rs.getString(1));
+                                rs.afterLast();
+                                rs.previous();
+                                lblSportMoins.setText(rs.getString(1));
+                               
+                            
+                            rs.close();
+                            stmt.close();
+                            conn.close();
+                        }
+                        catch (SQLException E)
+                        {
+                            System.out.println("SQLException" + E.getMessage());
+                            System.out.println("SQLState" + E.getSQLState());
+                            System.out.println("VendorError" + E.getErrorCode());
+                        }
+                        catch (ClassNotFoundException E)
+                        {
+                        
+    }
+    }
+     private void getStatSalle()
+    {
+        Connection conn;
+                        Statement stmt;
+                        ResultSet rs;
+                        String pilote="org.gjt.mm.mysql.Driver";
+                        String url = "jdbc:mysql://localhost/gestiongymnase";
+                        
+                        try
+                        {
+                            Class.forName(pilote);
+                            conn = DriverManager.getConnection(url,"root","");
+                            stmt = conn.createStatement();
+                            rs = stmt.executeQuery("SELECT refSalle, COUNT(*) FROM reservation GROUP BY refSalle");
+                            
+                        
+                                                         
+                               
+                                rs.next();
+                                lblSallePlus.setText(rs.getString(1));
+                                rs.afterLast();
+                                rs.previous();
+                                lblSalleMoins.setText(rs.getString(1));
+                               
+                            
+                            rs.close();
+                            stmt.close();
+                            conn.close();
+                        }
+                        catch (SQLException E)
+                        {
+                            System.out.println("SQLException" + E.getMessage());
+                            System.out.println("SQLState" + E.getSQLState());
+                            System.out.println("VendorError" + E.getErrorCode());
+                        }
+                        catch (ClassNotFoundException E)
+                        {
+                        
+    }
+    }
+    private void statistiques()
+    {
+        getStatSport();
+        getStatSalle();
+        /*requete = "SELECT refSport, COUNT(*) FROM reservation GROUP BY refSport";
+        res = MySQLAccess.select(requete);
+        try {
+            res.next();
+            lblSportPlus.setText(res.getString(1));
+            res.afterLast();
+            res.previous();
+            lblSportMoins.setText(res.getString(1));
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+        
+        requete = "SELECT refAsso, COUNT(*) FROM reservation GROUP BY refAsso";
+        res = MySQLAccess.select(requete);
+        try {
+            res.next();
+            lblClubPlus.setText(res.getString(1));
+            res.afterLast();
+            res.previous();
+            lblClubMoins.setText(res.getString(1));
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+        
+        requete = "SELECT heureDebut, COUNT(*) FROM reservation GROUP BY heureDebut";
+        res = MySQLAccess.select(requete);
+        try {
+            res.next();
+            lblHeurePlus.setText(res.getString(1));
+            res.afterLast();
+            res.previous();
+            lblHeureMoins.setText(res.getString(1));
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+        
+        */
     }
     public void recupererSalles()
     {
@@ -795,7 +1003,7 @@ public class fen_Admin extends javax.swing.JFrame {
             }
      public void recupererSallesOccupation()
     {
-        
+        cbxSalle.removeAllItems();
          Connection conn;
                         Statement stmt;
                         ResultSet rs;
@@ -889,11 +1097,16 @@ public class fen_Admin extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBoxRefSalle;
     private javax.swing.JComboBox<String> jComboBoxSport;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabelEditer2;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane7;
@@ -901,6 +1114,10 @@ public class fen_Admin extends javax.swing.JFrame {
     private javax.swing.JPanel jTabAssos;
     private javax.swing.JPanel jTabOccupation;
     private javax.swing.JTextField jTextFieldNomSport;
+    private javax.swing.JLabel lblSalleMoins;
+    private javax.swing.JLabel lblSallePlus;
+    private javax.swing.JLabel lblSportMoins;
+    private javax.swing.JLabel lblSportPlus;
     private javax.swing.JLabel lbl_date;
     private javax.swing.JTabbedPane tabbed_pane_admin;
     private javax.swing.JTable table_Association;
